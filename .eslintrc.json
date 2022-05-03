@@ -1,0 +1,38 @@
+{
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "globals": {
+    "page": true,
+    "browser": true,
+    "context": true,
+    "jestPuppeteer": true
+  },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "no-return-assign": 0,
+    "no-param-reassign": 0,
+    "curly": [
+      2,
+      "all"
+    ],
+    "max-len": 1,
+    "import/no-dynamic-require": 0,
+    "no-plusplus": 0,
+    "@typescript-eslint/no-unused-vars": [
+//      2,
+//      {
+//        "ignoreRestSiblings": true,
+//        "argsIgnorePattern": "^_"
+//      }
+      0
+    ]
+  }
+}

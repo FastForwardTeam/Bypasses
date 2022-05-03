@@ -1,0 +1,18 @@
+{
+  "name": "fastforward-bypasses-test",
+  "private": true,
+  "scripts": {
+    "test:chromium": "PLATFORM=chromium jest -i",
+    "test:firefox": "PLATFORM=firefox jest -i"
+  },
+  "devDependencies": {
+    "@types/expect-puppeteer": "^4.4.7",
+    "@types/jest-environment-puppeteer": "^5.0.2",
+    "jest-puppeteer": "^6.1.0",
+    "ts-jest": "^27.1.4"
+  },
+  "dependencies": {
+    "jest-environment-puppeteer": "^6.0.3",
+    "simple-git": "^3.7.1"
+  }
+}

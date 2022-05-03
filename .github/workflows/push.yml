@@ -1,0 +1,39 @@
+name: Auto testing
+
+on:
+  push:
+    branches: [ '*' ]
+  pull_request:
+    branches: [ '*' ]
+
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: |
+            package-lock.json
+            tests/package-lock.json
+
+      - name: Build
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
+        run: |
+          npm install
+          npm run build
+          cd tests
+          npm install
+
+      - name: Auto Testing
+        uses: ./.github/actions
+        env:
+          CI: 'true'
+        with:
+          args: npm run test:chromium

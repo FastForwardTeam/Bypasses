@@ -1,0 +1,42 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Get short commit SHA
+        id: id
+        run: echo "::set-output name=id::$(git rev-parse --short HEAD)"
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: ${{ steps.date.outputs.date }}
+          tag_name: ${{ steps.id.outputs.id }}
+          files: |
+            dist/rules.json
+            dist/bundle.js

@@ -1,0 +1,16 @@
+{
+  "files": [
+    "./index.test.ts"
+  ],
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "types": [
+      "jest",
+      "puppeteer",
+      "expect-puppeteer",
+      "jest-environment-puppeteer"
+    ]
+  }
+}
