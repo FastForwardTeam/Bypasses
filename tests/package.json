@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "jest-environment-puppeteer": "^6.0.3",
+    "puppeteer": "^13.7.0",
     "simple-git": "^3.7.1"
   }
 }

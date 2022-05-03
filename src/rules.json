@@ -180,7 +180,12 @@
       "url": "https://ouo.io/vhgEF",
       "to": "https://www.google.com/"
     },
-    "*://*.cpmlink.net/s/*?s=*",
+    {
+      "regex": "*://*.cpmlink.net/s/*?s=*",
+      "name": "cpmlink",
+      "url": "https://cpmlink.net/JeFxAQ",
+      "to": "https://www.google.com/"
+    },
     "*://*.shon.xyz/s/*?s=*"
   ],
   "param_dl_encoded_base64": [

@@ -4,7 +4,6 @@ const simpleGit = require('simple-git');
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const util = require('util');
 
 module.exports = async (globalConfig) => {
   const extensionDIR = path.join(__dirname, `extension-${process.env.PLATFORM}`);

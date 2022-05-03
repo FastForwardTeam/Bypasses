@@ -2,21 +2,39 @@ import { Page } from 'puppeteer';
 import fs from 'fs';
 
 function waitForURL(page: Page, url: string, timeout: number) {
-  return new Promise<string>((resolve) => {
+  return new Promise<string>((rev) => {
     let count = 0;
 
-    function check() {
-      if (page.url() === url) {
-        resolve(page.url());
-      } else if (count++ > timeout / 100) {
-        resolve(page.url());
+    function check(resolve: (value: (string | PromiseLike<string>)) => void) {
+      const pageURL = page.url();
+      if (pageURL === url) {
+        resolve(pageURL);
+      } else if (count++ > timeout / 500) {
+        resolve(pageURL);
       } else {
-        setTimeout(check, 100);
+        setTimeout(check, 500, resolve);
       }
     }
 
-    check();
+    check(rev);
   });
+}
+
+function redirectLogFF(page: Page) {
+  page.on('console', (consoleObj) => {
+    if (consoleObj.text()
+      .startsWith('FF ')) {
+      console.log(consoleObj.text());
+    }
+  });
+}
+
+async function goToPage(page: Page, url: string) {
+  try {
+    await page.goto(url, { timeout: 10000 });
+  } catch (e) {
+    await goToPage(page, url);
+  }
 }
 
 /*
@@ -30,13 +48,15 @@ for (let i = 0; i < files.length; i++) {
     .default();
   describe(`${f.name} bypass`, () => {
     beforeAll(async () => {
-      await page.goto(f.url);
-    });
+      redirectLogFF(page);
+      await page.bringToFront();
+      await goToPage(page, f.url);
+    }, 30000);
     it(`should go to ${f.to}`, async () => {
       await expect(waitForURL(page, f.to, f.timeout || 10000))
         .resolves
         .toMatch(f.to);
-    }, (f.timeout || 10000 * 2));
+    }, (f.timeout || 10000) * 2);
   });
 }
 
@@ -51,13 +71,15 @@ Object.keys(json)
         if (item.url && item.to) {
           describe(`${item.name || item.url} bypass`, () => {
             beforeAll(async () => {
-              await page.goto(item.url);
+              redirectLogFF(page);
+              await page.bringToFront();
+              await goToPage(page, item.url);
             }, 30000);
             it(`should go to ${item.to}`, async () => {
               await expect(waitForURL(page, item.to, item.timeout || 10000))
                 .resolves
                 .toMatch(item.to);
-            }, (item.timeout || 10000 * 2));
+            }, (item.timeout || 10000) * 2);
           });
         }
       });
