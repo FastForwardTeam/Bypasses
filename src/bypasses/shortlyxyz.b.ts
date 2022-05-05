@@ -11,11 +11,15 @@ domainBypass('shortly.xyz', () => {
       },
     });
   } else if (window.location.pathname === '/link') {
-    const xhr = new XMLHttpRequest();
-    xhr.onload = () => safelyNavigate(xhr.responseText);
-    xhr.open('POST', 'https://www.shortly.xyz/getlink.php', true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    xhr.send(`id=${window.location.hash.substr(1)}`);
+    fetch('https://www.shortly.xyz/getlink.php', {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+      method: 'POST',
+      body: new URLSearchParams({
+        id: window.location.hash.substr(1),
+      }),
+    }).then((res) => res.text()).then(safelyNavigate);
   }
 });

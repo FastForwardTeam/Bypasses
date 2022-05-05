@@ -5,8 +5,10 @@ let bypassed: boolean = false;
 const isGoodLinkAllowSelf: boolean = false;
 
 // Settings to be replaced before execution
-const crowdEnabled: boolean = false;
-const ignoreCrowdBypass: boolean = false;
+// @ts-ignore
+const crowdEnabled: boolean;
+// @ts-ignore
+const ignoreCrowdBypass: boolean;
 
 export function ODP(t: object, p: string, o: any) {
   try {
@@ -146,8 +148,8 @@ export function domainBypass(domain: string | RegExp, f: Function) {
   }
 }
 
-export function hrefBypass(regex: RegExp, f: Function) {
-  if (bypassed) {
+export function hrefBypass(regex: RegExp, f: Function, forceRun = false) {
+  if (bypassed && !forceRun) {
     return;
   }
 
@@ -189,7 +191,7 @@ function insertInfoBox(text: string) {
   });
 }
 
-export function ifElement(querySelector: string, func: Function, elseFunc?: Function) {
+export function ifElement(querySelector: string, func: (element: Element) => void, elseFunc?: Function) {
   ensureDomLoaded(() => {
     const e = document.querySelector(querySelector);
     if (e) {
@@ -200,7 +202,7 @@ export function ifElement(querySelector: string, func: Function, elseFunc?: Func
   });
 }
 
-export function awaitElement(querySelector: string, func: Function) {
+export function awaitElement(querySelector: string, func: (element: Element) => void) {
   ensureDomLoaded(() => {
     const t = setInterval(() => {
       const e = document.querySelector(querySelector);
@@ -209,7 +211,7 @@ export function awaitElement(querySelector: string, func: Function) {
         clearInterval(t);
       }
     }, 10);
-    setInterval(() => clearInterval(t), 30000);
+    setTimeout(() => clearInterval(t), 30000);
   });
 }
 
@@ -231,7 +233,7 @@ function crowdReferer(r: string) {
   }
 }
 
-function crowdBypass(f?: Function, a: boolean = false) {
+export function crowdBypass(f?: Function, a: boolean = false) {
   if (!f) {
     f = () => {
     };
@@ -309,3 +311,45 @@ function decodeURIEncodedMod(s: string) {
     return null;
   }
 }
+
+export function replaceSetInterval() {
+  const setIntervalOri = window.setInterval;
+  // @ts-ignore
+  window.setInterval = (func: any, interval: any): number => setIntervalOri(func, 1);
+  return setIntervalOri;
+}
+
+/*
+* Allowed functions to be used in user scripts
+* */
+interface CGlobal extends Window {
+  ODP: typeof ODP;
+  domainBypass: typeof domainBypass;
+  hrefBypass: typeof hrefBypass;
+  safelyAssign: typeof safelyAssign;
+  unsafelyAssign: typeof unsafelyAssign;
+  unsafelyAssignWithReferer: typeof unsafelyAssignWithReferer;
+  safelyNavigate: typeof safelyNavigate;
+  unsafelyNavigate: typeof unsafelyNavigate;
+  crowdBypass: typeof crowdBypass;
+  ensureDomLoaded: typeof ensureDomLoaded;
+  ifElement: typeof ifElement;
+  awaitElement: typeof awaitElement;
+  replaceSetInterval: typeof replaceSetInterval;
+}
+
+declare let global: CGlobal;
+
+global.ODP = ODP;
+global.domainBypass = domainBypass;
+global.hrefBypass = hrefBypass;
+global.safelyAssign = safelyAssign;
+global.unsafelyAssign = unsafelyAssign;
+global.unsafelyAssignWithReferer = unsafelyAssignWithReferer;
+global.safelyNavigate = safelyNavigate;
+global.unsafelyNavigate = unsafelyNavigate;
+global.crowdBypass = crowdBypass;
+global.ensureDomLoaded = ensureDomLoaded;
+global.ifElement = ifElement;
+global.awaitElement = awaitElement;
+global.replaceSetInterval = replaceSetInterval;

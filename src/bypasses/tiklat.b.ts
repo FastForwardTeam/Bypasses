@@ -1,7 +1,11 @@
-import { domainBypass, awaitElement, safelyNavigate } from '../fastforward';
+import {
+  awaitElement, domainBypass, replaceSetInterval, safelyAssign,
+} from '../fastforward';
 
 domainBypass('tik.lat', () => {
-  // @ts-ignore
-  window.setInterval = (f) => setInterval(f, 1);
-  awaitElement('.skip > .wait > .skip > .btn > a[href]', safelyNavigate);
+  replaceSetInterval();
+
+  awaitElement('.skip > .wait > .skip > .btn > a[href]', (el: HTMLAnchorElement) => {
+    safelyAssign(el);
+  });
 });

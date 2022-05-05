@@ -26,25 +26,32 @@ module.exports = {
             stage: Compilation.PROCESS_ASSETS_STAGE_SUMMARIZE,
           }, (assets) => {
             /* eslint-disable no-underscore-dangle */
-            assets['bundle.js']._value = assets['bundle.js']._value.substr(19, assets['bundle.js']._value.length - 24);
-            assets['bundle.js']._valueAsString = assets['bundle.js']._valueAsString.substr(19, assets['bundle.js']._valueAsString.length - 24);
+            assets['bundle.js']._value = assets['bundle.js']._value.substr(6, assets['bundle.js']._value.length - 11);
+            assets['bundle.js']._valueAsString = assets['bundle.js']._valueAsString.substr(6, assets['bundle.js']._valueAsString.length - 11);
             /* eslint-enable no-underscore-dangle */
           });
-        });
-        compiler.hooks.emit.tap('EmitPlugin', (compilation, cb) => {
           // Add rules.json to the bundle
-          const json = JSON.parse(fs.readFileSync('./src/rules.json', 'utf8'));
-          Object.keys(json)
-            .forEach((key) => {
-              if (Array.isArray(json[key])) {
-                json[key] = json[key].map((item) => item.regex || item);
-              }
-            });
-          const jsonStr = JSON.stringify(json);
-          compilation.assets['rules.json'] = {
-            source: () => jsonStr,
-            size: () => jsonStr.length,
-          };
+          compilation.hooks.processAssets.tap({
+            name: 'ProcessAssetsPlugin',
+            stage: Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
+          }, (assets) => {
+            const json = JSON.parse(fs.readFileSync('./src/rules.json', 'utf8'));
+            Object.keys(json)
+              .forEach((key) => {
+                if (Array.isArray(json[key])) {
+                  if (json[key].length === 0) {
+                    delete json[key];
+                  } else {
+                    json[key] = json[key].map((item) => item.regex || item);
+                  }
+                }
+              });
+            const jsonStr = JSON.stringify(json);
+            assets['rules.json'] = {
+              source: () => jsonStr,
+              size: () => jsonStr.length,
+            };
+          });
         });
       },
     },

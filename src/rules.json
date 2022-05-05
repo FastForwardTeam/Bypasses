@@ -1,39 +1,66 @@
 {
   "path_base64": [
-    "*://*.bursadrakor.com/protect-link/*",
-    "*://*.getfile.mobi/get/files/*",
-    "*://hikarinoakari.com/out/?*",
-    "*://*.itscybertech.com/*"
+    {
+      "regex": "*://*.hikarinoakari.com/out/?*",
+      "name": "hikarinoakari.com",
+      "url": "https://hikarinoakari.com/out/?aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8=",
+      "to": "https://www.google.com/"
+    },
+    {
+      "regex": "*://leechall.com/go/*",
+      "name": "leechall.com go",
+      "url": "https://leechall.com/go/aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8=",
+      "to": "https://www.google.com/"
+    }
   ],
   "path_s_encoded": [
-    "*://*.gslink.co/e/*/s/*"
   ],
   "path_r_base64": [
-    "*://*.linkspy.cc/r/*"
+    {
+      "regex": "*://*.linkspy.cc/r/*",
+      "name": "linkspy.cc",
+      "url": "https://linkspy.cc/r/aHR0cHM6Ly9yZWRpcmVjdGlpbmctcGFnZWUuYmxvZ3Nwb3QuY29tLzIwMjEvMDEvYmxvZy1wb3N0XzkuaHRtbA==",
+      "to": "https://redirectiing-pagee.blogspot.com/2021/01/blog-post_9.html"
+    }
   ],
   "path_dl_base64": [
-    "*://*.k2nblog.com/dl/*",
-    "*://*.filekita.me/page/dl/*"
+    {
+      "regex": "*://nmac.to/blog/dl/*",
+      "name": "nmac.to",
+      "url": "https://nmac.to/blog/dl/aHR0cHM6Ly9zZW5kLmNtLzY1eDNkeTk0bWxpbQ==",
+      "to": "https://send.cm/65x3dy94mlim"
+    }
   ],
   "path_u_id_base64": [
-    "*://*.shrink-service.it/u/*/*"
   ],
   "path_ads_hex": [
-    "*://*.leechall.com/ads/*"
+    {
+      "regex": "*://*.leechall.com/ads/*",
+      "name": "leechall.com ads",
+      "url": "https://leechall.com/ads/68747470733A2F2F7777772E676F6F676C652E636F6D2F",
+      "to": "https://www.google.com/"
+    }
   ],
   "query_raw": [
-    "*://*.anonym.to/?*",
-    "*://*.anonymz.com/?*",
-    "*://*.hidereferrer.com/?*",
-    "*://*.pixiv.net/jump.php?*"
+    {
+      "regex": "*://*.anonymz.com/?*",
+      "name": "anonymz.com",
+      "url": "https://anonymz.com/?https://www.google.com/",
+      "to": "https://www.google.com/"
+    }
   ],
   "query_base64": [
-    "*://*.hikarinoakariost.info/out/?*",
-    "*://*.p3dm.ru/download-en.html?*",
-    "*://*.iplhd.cf/*?*"
+    {
+      "regex": "*://*.hikarinoakariost.info/out/?*",
+      "name": "hikarinoakariost.info",
+      "url": "https://hikarinoakariost.info/out/?aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8=",
+      "to": "https://www.google.com/"
+    },
+    {
+      "regex": "*://*.p3dm.ru/download-en.html?*"
+    }
   ],
   "hash_base64": [
-    "*://*.acorme.com/*"
   ],
   "param_url_general": [
     "*://*/st?api=*&url=*",
@@ -47,65 +74,84 @@
   "param_url_encoded": [
     "*://*/safeme/?*",
     "*://*/url/go.php?url=*",
-    "*://*.leechall.com/redirect.php?url=*",
-    "*://*.news-gg.com/l/?*",
-    "*://*.mobile01.com/redirect.php?*",
-    "*://*.nurhamka.com/*?url=*",
-    "*://*.linepc.site/*?url=*",
-    "*://*.adobedownload.org/redirect/?url=*",
-    "*://*.sopasti.com/anime.php?*",
-    "*://*.zxro.com/u/*?url=*",
-    "*://*.macdownload.org/redirect/?url=*",
-    "*://*.forek.info/*?url=*",
-    "*://*.creditcable.info/*/*?*",
-    "*://*.adfoc.us/serve/sitelinks/?*",
-    "*://*.made-by.org/redirection/?url=*",
-    "*://*.itsbx.com/redirect/?url=*",
-    "*://*.forocoches.com/link.php?url=*",
+    {
+      "regex": "*://*.sopasti.com/anime.php?url=*",
+      "name": "sopasti.com",
+      "url": "https://www.sopasti.com/anime.php?url=https://www.google.com",
+      "to": "https://www.google.com/"
+    },
+    {
+      "regex": "*://*.zxro.com/u/?url=*",
+      "name": "zxro.com",
+      "url": "http://zxro.com/u/?url=https://www.google.com",
+      "to": "https://www.google.com/"
+    },
+    {
+      "regex": "*://*.adfoc.us/serve/sitelinks/?*url=*"
+    },
+    {
+      "regex": "*://*.itsbx.com/redirect/?url=*",
+      "name": "itsbx.com",
+      "url": "https://itsbx.com/redirect/?url=https://www.google.com",
+      "to": "https://www.google.com/"
+    },
+    {
+      "regex": "*://*.forocoches.com/link.php?url=*",
+      "name": "forocoches.com",
+      "url": "https://forocoches.com/link.php?url=https://www.google.com",
+      "to": "https://www.google.com/"
+    },
     "*://*.pixiv.net/jump.php?url=*",
-    "*://hdblurayindir.com/git.php?url=*",
-    "*://gate.sc/?url=*",
-    "*://freetutsdownload.net/redirect-to/?url=*",
-    "*://mcpedl.com/leaving/?url=*",
-    "*://go.redirectingat.com/?id=*&url=*"
+    {
+      "regex": "*://hdblurayindir.com/git.php?url=*",
+      "name": "hdblurayindir.com",
+      "url": "https://hdblurayindir.com/git.php?url=https://www.google.com",
+      "to": "https://www.google.com/"
+    },
+    {
+      "regex": "*://dl.freetutsdownload.net/redirect-to/?url=*",
+      "name": "freetutsdownload.net",
+      "url": "https://dl.freetutsdownload.net/redirect-to/?url=https%3A%2F%2Fwww.google.com",
+      "to": "https://www.google.com/"
+    },
+    {
+      "regex": "*://mcpedl.com/leaving/?url=*",
+      "name": "mcpedl.com",
+      "url": "https://mcpedl.com/leaving/?url=https%3A%2F%2Fwww.google.com",
+      "to": "https://www.google.com/"
+    }
   ],
   "param_url_raw": [
-    "*://*.steamcommunity.com/linkfilter/?url=*"
+    {
+      "regex": "*://*.steamcommunity.com/linkfilter/?url=*",
+      "name": "steamcommunity.com",
+      "url": "https://steamcommunity.com/linkfilter/?url=https://www.google.com/",
+      "to": "https://www.google.com/"
+    }
   ],
   "param_q_encoded": [
-    "*://*.youtube.com/redirect?*"
+    {
+      "regex": "*://*.youtube.com/redirect?*",
+      "name": "youtube.com",
+      "url": "https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbXZya1ZkeU9KdHBkRVMxRXpkaUF4ZUdvcDZQZ3xBQ3Jtc0tsWi13V3ljWm1MMngtV2xOcTlDdmhNSWRVMGx0UnpqUUVMdnpDVUYzb0t0Q1ladkxHVmtPTXpld0NVMW56VjkwWThEVDJBOWlHT1ZGb244d09NdHBWeFdCR2NjaExHZHAydnp1aG9lZ09aTDRCMzRUMA&q=https%3A%2F%2Fwhatsticker.online%2Fp%2F497884fJEhbS1%2FHK%2Fzh&v=BPRGwuhL0vw",
+      "to": "https://whatsticker.online/p/497884fJEhbS1/HK/zh"
+    }
   ],
   "param_aurl_encoded": [
-    "*://*.folderenius.com/*/*?*"
   ],
   "param_capital_url_encoded": [
-    "*://*.unlockapk.com/dl/mirror.php?*"
   ],
   "param_rel_base64": [
-    "*://*.kharismanews.com/?rel=*",
-    "*://out.x-forex.site/?rel=*"
   ],
   "param_link_encoded": [
-    "*://*.spaste.com/r/*link=*"
   ],
   "param_link_base64": [
-    "*://*.leechpremium.link/cheat/?link=*",
-    "*://*.bdzone.xyz/cheat.php?link=*",
-    "*://*.extramovies.casa/download.php?name=*&link=*",
-    "*://*.gilakerja.com/*/?link=*",
-    "*://sekolahgan.my.id/?link=*"
   ],
   "param_link_encoded_base64": [
-    "*://*.safelinkgratis.info/*?link=*"
   ],
   "param_kesehatan_base64": [
-    "*://*.infosia.xyz/?kesehatan=*"
   ],
   "param_wildcard_base64": [
-    "*://*.pafpaf.info/?*=*",
-    "*://*.binerfile.info/?*=*",
-    "*://kurosafety.menantisenja.com/?*=*",
-    "*://hightech.web.id/*?*=*"
   ],
   "param_r_base64": [
     "*://*/?r=*",
@@ -113,127 +159,111 @@
     "*://*/api/?r=*"
   ],
   "param_kareeI_base64_pipes": [
-    "*://*.blogspot.com/?kareeI=*"
   ],
   "param_cr_base64": [
-    "*://*.ouo.today/?*"
+    {
+      "regex": "*://*.ouo.today/?*cr=*",
+      "url": "https://ww12.ouo.today/?oID=252325&cr=aHR0cHM6Ly91bml2ZXJzYWwtYnlwYXNzLm9yZy8%3D",
+      "to": "https://universal-bypass.org/",
+      "comment": "The URL needs to be decodeURIComponent in background.js"
+    }
   ],
   "param_a_base64": [
-    "*://*.adsafelink.net/generate?a=*"
   ],
   "param_url_base64": [
     "*://*/p/*.html?url=aHR0c*",
-    "*://*.blogspot.com/*/*/*?url=*",
     "*://*/descargar/index.php?url=*",
     "*://*/gotothedl.html?url=*",
-    "*://*.mispuani.xyz/*?url=*",
-    "*://*.safelinku.icu/*?url=*",
-    "*://*.ad4msan.win/safe?url=*",
-    "*://*.infotekno.net/vga?url=*",
-    "*://*.sehuruf.com/linkku/?url=*",
-    "*://*.novicearea.com/*/?url=*",
-    "*://*.dikatekno.com/go/?url=*",
-    "*://*.blackmod.net/dl/?url=*",
-    "*://*.hulblog.com/*/?url=*",
-    "*://*.omglyrics.com/*/?url=*",
-    "*://*.nyantaidulu.com/linknya/?url=*",
-    "*://*.pixelshost.com/?url=*"
+    {
+      "regex": "*://*.dikatekno.com/go/?url=*",
+      "name": "dikatekno.com",
+      "url": "https://dikatekno.com/go/?url=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8=",
+      "to": "https://www.google.com/"
+    },
+    {
+      "regex": "*://*.blackmod.net/dl/?url=*",
+      "name": "blackmod.net",
+      "url": "https://blackmod.net/dl/?url=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8=",
+      "to": "https://www.google.com/"
+    }
   ],
   "param_id_base64": [
-    "*://*/p/*.html?id=*",
-    "*://*.newsdecorate.com/?id=*"
+    "*://*/p/*.html?id=*"
   ],
   "param_get_base64": [
-    "*://safelink.hargawebsite.com/?get=*",
-    "*://safelink.hargawebsite.com/*/?get=*"
   ],
   "param_u_base64": [
-    "*://*.rikucan.com/?u=*",
-    "*://*.noriskdomain.com/*/analyze?*"
   ],
   "param_go_base64": [
     "*://*/api/index.php?go=*",
-    "*://*.telolet.in/?go=*",
-    "*://*.lompat.in/?go=*",
-    "*://*.grandmovie21.com/?go=*",
-    "*://*.postku.org/?go=*"
+    "*://*.lompat.in/?go=*"
   ],
   "param_site_base64": [
-    "*://*.masreyhan.com/*?site=*",
-    "*://*.pasardownload.com/*?site=*",
-    "*://*.vius.info/*?site=*",
-    "*://*.cariskuy.com/*?site=*",
-    "*://*.losstor.com/ini/?site=*",
-    "*://*.giga74.com/*?site=*",
-    "*://*.hfiz.site/?site=*",
-    "*://*.cemiw.net/*?site=*"
   ],
   "param_reff_base64": [
-    "*://*.remiyu.me/*?reff=*",
-    "*://*.ceksite.id/*?reff=*",
-    "*://*.postku.org/*?reff=*"
   ],
   "param_s_encoded": [
     {
-      "regex": "*://*.ouo.io/*?s=*",
+      "regex": "*://ouo.io/*?s=*",
       "name": "ouo.io",
       "url": "https://ouo.io/vhgEF",
-      "to": "https://www.google.com/"
+      "to": "https://www.google.com/",
+      "timeout": 20000
+    },
+    {
+      "regex": "*://ouo.press/*?s=*",
+      "name": "ouo.io",
+      "url": "https://ouo.press/vhgEF",
+      "to": "https://www.google.com/",
+      "timeout": 20000
     },
     {
       "regex": "*://*.cpmlink.net/s/*?s=*",
       "name": "cpmlink",
       "url": "https://cpmlink.net/JeFxAQ",
       "to": "https://www.google.com/"
-    },
-    "*://*.shon.xyz/s/*?s=*"
+    }
   ],
   "param_dl_encoded_base64": [
-    "*://*.nimebatch.net/download/?dl=*"
   ],
   "param_health_encoded_base64": [
-    "*://*.newhealthblog.com/?health=*"
   ],
   "param_id_reverse_base64": [
     "*://*/instagram/campanha.php?*"
   ],
   "param_token_base64": [
-    "*://*.mundodocinema.ga/redirecionamento_final?*"
   ],
   "param_href_encoded": [
-    "*://*.maranhesduve.club/?*",
-    "*://*.sparbuttantowa.pro/*?*"
   ],
   "param_short_encoded": [
-    "*://*.duit.cc/*?*"
   ],
   "param_id_base64_replacements": [
-    "*://*.safelinkconverter.com/*?*",
-    "*://*.safelinkreview.com/*?*",
-    "*://*.safelinkreviewx.com/*?*",
-    "*://*.safelinkreview.co/*?*",
-    "*://*.awsubsco.ml/*?*",
-    "*://*.awsubsco.cf/*?*"
+    {
+      "regex": "*://link.safelinkconverter.com/review.php?id=*",
+      "name": "link.safelinkconverter.com",
+      "url": "https://link.safelinkconverter.com/review.php?id=aHR0cHM6Ly93d3cxMDAuel9wcHlzaCFyKS5jKG0vdi83S0IoVnJ4UC9mX2wpLmh0bWw=&c=1&user=18378",
+      "to": "https://www100.zippyshare.com/v/7KBoVrxP/file.html"
+    }
   ],
   "param_dest_encoded": [
-    "*://*.ecleneue.com/pushredirect/?*"
   ],
   "param_go_hex": [
-    "*://*.zflas.com/*?go=*",
-    "*://*.365myoffice.com/?go=*",
-    "*://*.shiroyasha.me/?go=*",
-    "*://*.copydev.com/?go=*"
   ],
   "param_to_base64": [
-    "*://*.beermoneyforum.com/redirect?*",
-    "*://*.instant-hack.to/redirect*?to=*"
+    {
+      "regex": "*://*.beermoneyforum.com/redirect?to=*",
+      "name": "beermoneyforum.com",
+      "url": "https://www.beermoneyforum.com/redirect?to=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8=",
+      "to": "https://www.google.com/"
+    },
+    {
+      "regex": "*://*.instant-hack.to/redirect*?to=*",
+      "name": "instant-hack.to",
+      "url": "https://instant-hack.to/redirect?to=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8=",
+      "to": "https://www.google.com/"
+    }
   ],
   "param_data_base64": [
-    "*://*.magersari.web.id/?*",
-    "*://zodiark.xyz/?data=*",
-    "*://rahwana.xyz/?data=*",
-    "*://caraterbaik.my.id/?data=*",
-    "*://*.wisatamu.my.id/?data=*"
   ],
   "useragent_chrome": [
     "*://*.fluxteam.xyz/*"

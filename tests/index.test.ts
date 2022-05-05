@@ -9,10 +9,10 @@ function waitForURL(page: Page, url: string, timeout: number) {
       const pageURL = page.url();
       if (pageURL === url) {
         resolve(pageURL);
-      } else if (count++ > timeout / 500) {
+      } else if (count++ > timeout / 100) {
         resolve(pageURL);
       } else {
-        setTimeout(check, 500, resolve);
+        setTimeout(check, 100, resolve);
       }
     }
 
@@ -37,6 +37,22 @@ async function goToPage(page: Page, url: string) {
   }
 }
 
+function addTest(name: string, url: string, to: string, timeout: number = 10000) {
+  describe(`${name} bypass`, () => {
+    beforeAll(async () => {
+      await jestPuppeteer.resetPage();
+      redirectLogFF(page);
+      await page.bringToFront();
+      await goToPage(page, url);
+    }, 30000);
+    it(`should go to ${to}`, async () => {
+      await expect(waitForURL(page, to, 10000))
+        .resolves
+        .toMatch(to);
+    }, (timeout || 10000) * 2);
+  });
+}
+
 /*
 * Tests for injection_script.ts
 */
@@ -46,18 +62,7 @@ for (let i = 0; i < files.length; i++) {
   // eslint-disable-next-line global-require
   const f = require(`../src/bypasses/${files[i]}`)
     .default();
-  describe(`${f.name} bypass`, () => {
-    beforeAll(async () => {
-      redirectLogFF(page);
-      await page.bringToFront();
-      await goToPage(page, f.url);
-    }, 30000);
-    it(`should go to ${f.to}`, async () => {
-      await expect(waitForURL(page, f.to, f.timeout || 10000))
-        .resolves
-        .toMatch(f.to);
-    }, (f.timeout || 10000) * 2);
-  });
+  addTest(f.name, f.url, f.to, f.timeout);
 }
 
 /*
@@ -69,18 +74,7 @@ Object.keys(json)
     if (Array.isArray(json[key])) {
       json[key].forEach((item) => {
         if (item.url && item.to) {
-          describe(`${item.name || item.url} bypass`, () => {
-            beforeAll(async () => {
-              redirectLogFF(page);
-              await page.bringToFront();
-              await goToPage(page, item.url);
-            }, 30000);
-            it(`should go to ${item.to}`, async () => {
-              await expect(waitForURL(page, item.to, item.timeout || 10000))
-                .resolves
-                .toMatch(item.to);
-            }, (item.timeout || 10000) * 2);
-          });
+          addTest(item.name, item.url, item.to, item.timeout);
         }
       });
     }
