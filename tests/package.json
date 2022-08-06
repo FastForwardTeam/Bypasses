@@ -2,6 +2,7 @@
   "name": "fastforward-bypasses-test",
   "private": true,
   "scripts": {
+    "setup": "PLATFORM=chromium node setup.js",
     "test:chromium": "PLATFORM=chromium jest -i",
     "test:firefox": "PLATFORM=firefox jest -i"
   },

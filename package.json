@@ -5,7 +5,8 @@
     "build": "webpack",
     "lint": "eslint src/ --ext .ts",
     "lint-fix": "eslint src/ --ext .js,.ts --fix",
-    "test:chromium": "cd tests && npm run test:chromium"
+    "test:chromium": "cd tests && npm run test:chromium",
+    "setup": "cd tests && npm run setup"
   },
   "dependencies": {
     "glob": "^8.0.1",
